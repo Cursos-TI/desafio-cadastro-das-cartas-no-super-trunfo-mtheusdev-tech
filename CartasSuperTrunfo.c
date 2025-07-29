@@ -1,18 +1,28 @@
 #include <stdio.h>
+#include <stdlib.h>
 
 // Desafio Super Trunfo - Países
 //Teste Matheus Andrade Prata
 
 int main() {
-    char co1[10], co2[10], n1[50], n2[50], sim[5], sim2[5], es1, es2;
+    char co1[10], co2[10], n1[50], n2[50], sim[5], es1, es2;
     float pib1, pib2, ar1, ar2, dp1, dp2, tu1, tu2;
     unsigned int po1, po2;
-    double pc1, pc2;
+    double pc1, pc2, invDap1, invDap2;
+    int opcao, batalha;
 
-    printf("\n¨¨¨¨VAMOS JOGAR???¨¨¨¨\n");
-    scanf("%s", sim2);
+    printf("\n¨¨¨¨ SUPER TRUNFO - PAÍSES ¨¨¨¨\n");
+    printf("1 - Vamos jogar\n");
+    printf("2 - Regras do jogo\n");
+    printf("3 - Sair\n");
+    printf("Escolha uma opção:");
+    scanf("%d", &opcao); 
 
-    printf("Qual o Estado? \n");
+    switch (opcao)
+    {
+    case 1:
+
+      printf("Qual o Estado? \n");
     scanf(" %c", &es1);
 
     printf("Qual o código? \n");
@@ -36,7 +46,7 @@ int main() {
     dp1 = po1 / ar1;
     pib1 = pib1 * 1000000000;
     pc1 = (double)pib1 / po1;
-
+       
         printf("\n--- Carta 01: ---\n");
         printf("Estado: %c \n", es1);
         printf("Código: %s\n", co1);
@@ -47,9 +57,8 @@ int main() {
         printf("Número de Pontos Turístico: %.2f \n", tu1);
         printf("Densidade Populacional: %.2f hab/km²\n", dp1);
         printf("PIB per Capita: R$ %.2f \n", pc1);
-    
-            
-    printf("\nQual o Estado? \n");
+
+     printf("\nQual o Estado? \n");
     scanf(" %c", &es2);
     
     printf("Qual o código? \n");
@@ -84,70 +93,157 @@ int main() {
          printf("Número de Pontos Turístico: %.2f \n", tu2);
          printf("Densidade Populacional: %.2f hab/km² \n", dp2);
          printf("PIB per Capita: R$ %.2f \n", pc2);
-
-    printf("\n---PRONTO PARA BATALHAR?---\n");
-    scanf("%s", sim);
-
+       
     double invDap1 = ar1 / (double) po1;
     double invDap2 = ar2 / (double) po2;
 
     unsigned long int super1 =(double) po1 + ar1 + pib1  + tu1 + invDap1 + pc1;
     unsigned long int super2 =(double) po2 + ar2 + pib2  + tu2 + invDap2 + pc2;
 
-    // DESENVOLVENDO A LÓGICA DO JOGO
+    printf("\n##########---Escolha um atributo para BATALHAR:---##########\n");
+    printf("1. População \n");
+    printf("2. Área \n");
+    printf("3. PIB \n");
+    printf("4. Número de pontos turísticos \n");
+    printf("5. PIB per capita \n");
+    printf("6. Super Poder \n");
+    printf("7. Densidade Demográfica \n");
+    scanf("%d", &batalha);
 
-     printf("\n---RESULTADOS---\n");
-
-    if (po1 > po2) {
-        printf("População: %s vence!\n", co1);
-    } else {
-        printf("População: %s vence!\n", co2);
-    }
-    if (ar1 > ar2) {
-        printf("Área: %s vence! \n", co1);
-    } else {
-        printf("Área: %s vence! \n", co2);
-    }
-    if (pib1 > pib2) {
-        printf("PIB: %s vence! \n", co1);
-    } else {
-        printf("PIB: %s vence1 \n", co2);
-    }
-    if (tu1 > tu2) {
-        printf("Turísmo: %s vence! \n", co1);
-    } else {
-        printf("Turísmo: %s vence! \n", co2);
-    }
-    if (pc1 < pc2) {
-        printf("PIB per capita: %s vence! \n", co1);
-    } else {
-        printf("PIB per capita: %s vence! \n", co2);
-    }
-    if (super1 > super2) {
-        printf("Super Poder: %s vence! \n", co1);
-    } else {
-        printf("Super Poder: %s vence! \n", co2);
-    }
     
-     /* NÍVEL 1 DO MODO MESTRE
-    int Vencepop = (po1 > po2) ? 1 : 0;
-    int Vencear = (ar1 > ar2) ? 1 : 0;
-    double Vencepib = (pib1 > pib2) ? 1 : 0;
-    int Vencenum = (tu1 > tu2) ? 1 : 0;
-    int Venceper = (pc1 > pc2) ? 1 : 0;
-    int Vencesup = (super1 > super2) ? 1 : 0;
-
-     printf("\n---RESULTADOS---\n");
-     printf("População: %u vence!\n", Vencepop? 1 : 2);
-     printf("Área: %u vence!\n", Vencear? 1 : 2);
-     printf("PIB: %u vence!\n", Vencepib? 1 : 2);
-     printf("Turísmo: %d vence!\n", Vencenum? 1: 2);
-     printf("PIB per capita: %u vence!\n", Venceper? 1 : 2);
-     printf("Super Poder: %u vence!\n", Vencesup? 1 : 2); */
-
-     printf("\n---Valores óbitidos: SUPER PODER: %lu---\n", super1);
-     printf("\n---Valores óbitidos: SUPER PODER: %lu---\n", super2); 
-
+    switch (batalha)
+    {
+    case 1:
+           if (po1 > po2) {
+        printf("Batalha entre: %s -- %s \n", n1, n2);
+        printf("População: %s vence!\n", n1);
+        printf("Valores: %s são %u --- %s são %u \n", n1, po1, n2, po2);
+    } else if (po1 < po2){
+        printf("Batalha entre: %s -- %s \n", n1, n2);
+        printf("População: %s vence!\n", n2);
+        printf("Valores: %s são %u --- %s são %u \n", n1, po1, n2, po2);
+    } else {
+        printf("Batalha entre: %s -- %s \n", n1, n2);
+        printf("População: Houve um empate! \n");
+        printf("Valores: %s são %u --- %s são %u \n", n1, po1, n2, po2);
+    }
+        break;
+    case 2:
+           if (ar1 > ar2) {
+        printf("Batalha entre: %s -- %s \n", n1, n2);
+        printf("Área: %s vence! \n", n1);
+        printf("Valores: %s são %2.f --- %s são %2.f \n", n1, ar1, n2, ar2);
+    } else if(ar1 < ar2) {
+        printf("Batalha entre: %s -- %s \n", n1, n2);
+        printf("Área: %s vence! \n", n2);
+        printf("Valores: %s são %2.f --- %s são %2.f \n", n1, ar1, n2, ar2);
+    } else {
+        printf("Batalha entre: %s -- %s \n", n1, n2);
+        printf("Área: Houve um empate! \n");
+        printf("Valores: %s são %2.f --- %s são %2.f \n", n1, ar1, n2, ar2);
+    }
+        break;
+    case 3:
+           if (pib1 > pib2) {
+        printf("Batalha entre: %s -- %s \n", n1, n2);
+        printf("PIB: %s vence! \n", n1);
+        printf("Valores: %s são %2.f --- %s são %2.f \n", n1, pib1, n2, pib2);
+    } else if(pib1 < pib2) {
+        printf("Batalha entre: %s -- %s \n", n1, n2);
+        printf("PIB: %s vence! \n", n2);
+        printf("Valores: %s são %2.f --- %s são %2.f \n", n1, pib1, n2, pib2);
+    } else {
+        printf("Batalha entre: %s -- %s \n", n1, n2);
+        printf("PIB: Houve um empate! \n");
+        printf("Valores: %s são %2.f --- %s são %2.f \n", n1, pib1, n2, pib2);
+    }
+        break;
+    case 4:
+           if (tu1 > tu2) {
+        printf("Batalha entre: %s -- %s \n", n1, n2);
+        printf("Turísmo: %s vence! \n", n1);
+        printf("Valores: %s são %2.f --- %s são %2.f \n", n1, tu1, n2, tu2);
+    } else if(tu1 < tu2) {
+        printf("Batalha entre: %s -- %s \n", n1, n2);
+        printf("Turísmo: %s vence! \n", n2);
+        printf("Valores: %s são %2.f --- %s são %2.f \n", n1, tu1, n2, tu2);
+    } else {
+        printf("Batalha entre: %s -- %s \n", n1, n2);
+        printf("Turísmo: Houve um empate! \n");
+        printf("Valores: %s são %2.f --- %s são %2.f \n", n1, tu1, n2, tu2);
+    }
+        break;
+    case 5:
+           if (pc1 < pc2) {
+        printf("Batalha entre: %s -- %s \n", n1, n2);
+        printf("PIB per capita: %s vence! \n", n1);
+        printf("Valores: %s são %2.f --- %s são %2.f \n", n1, pc1, n2, pc2);
+    } else if(pc1 > pc2) {
+        printf("Batalha entre: %s -- %s \n", n1, n2);
+        printf("PIB per capita: %s vence! \n", n2);
+        printf("Valores: %s são %2.f --- %s são %2.f \n", n1, pc1, n2, pc2);
+    } else {
+         printf("Batalha entre: %s -- %s \n", n1, n2);
+        printf("PIB per capita: Houve um empate! \n");
+        printf("Valores: %s são %2.f --- %s são %2.f \n", n1, pc1, n2, pc2);
+    }
+        break;
+    case 6:
+           if (super1 > super2) {
+        printf("Batalha entre: %s -- %s \n", n1, n2);
+        printf("Super Poder: %s vence! \n", n1);
+        printf("Valores: %s são %2.lu --- %s são %2.lu \n", n1, super1, n2, super2);
+    } else if(super1 < super2) {
+        printf("Batalha entre: %s -- %s \n", n1, n2);
+        printf("Super Poder: %s vence! \n", n2);
+        printf("Valores: %s são %2.lu --- %s são %2.lu \n", n1, super1, n2, super2);
+    } else {
+        printf("Batalha entre: %s -- %s \n", n1, n2);
+        printf("Super Poder: Houve um empate! \n");
+        printf("Valores: %s são %2.lu --- %s são %2.lu \n", n1, super1, n2, super2);
+    }
+        printf("\n---Valores óbitidos: SUPER PODER: %lu---\n", super1);
+        printf("\n---Valores óbitidos: SUPER PODER: %lu---\n", super2); 
+        break;
+    case 7:
+            if (invDap1 < invDap2){
+        printf("Batalha entre: %s -- %s \n", n1, n2);
+        printf("Densidade Demográfica: %s vence! \n", n1);
+        printf("Valores: De %s são %.2f --- De %s são %.2f \n", n1, invDap1, n2, invDap2);
+            } else if(invDap1 > invDap2) {
+        printf("Batalha entre: %s -- %s \n", n1, n2);
+        printf("Densidade Demográfica: %s vence! \n", n2);
+        printf("Valores: De %s são %.2f --- De %s são %.2f \n", n1, invDap1, n2, invDap2);
+            } else {
+        printf("Batalha entre: %s -- %s \n", n1, n2);
+        printf("Densidade Demográfica: Houve um empate! \n");
+        printf("Valores: De %s são %.2f --- De %s são %.2f \n", n1, invDap1, n2, invDap2);
+            }
+            
+    default:
+     printf("\n***-- Opção inválida! Por favor, tente novamente! --***\n");
+        break;
+    }
+ 
      printf("\n¨¨¨¨¨ OBRIGADO POR JOGAR!!! ¨¨¨¨¨\n");
+    return 0;
+        break;
+
+    case 2:
+    printf("Regras do jogo:\n");
+    printf("1. Vence a carta com maior valor no atributo escolhido\n ");
+    printf("2. Para DENSIDADE DEMOGRÁFICA, a carta com menor valor vence.\n");
+    printf("3. Os valores cadastrados devem ser real.\n");
+        break;
+
+    case 3:
+    printf("\n............Saindo do jogo! Até logo..............\n");
+        break;
+
+    default:
+    printf("***-- Opção inválida! Por favor, tente novamente! --***");
+        return 1;
+    }
+
     return 0;
 }
