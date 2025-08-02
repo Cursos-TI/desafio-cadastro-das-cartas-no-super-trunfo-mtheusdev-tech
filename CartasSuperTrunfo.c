@@ -11,6 +11,9 @@ int main() {
     double pc1, pc2, invDap1, invDap2;
     int opcao, batalha, batalha2, res1, res2;
 
+    do{
+    
+
     printf("\n¨¨¨¨ SUPER TRUNFO - PAÍSES ¨¨¨¨\n");
     printf("1 - Vamos jogar\n");
     printf("2 - Regras do jogo\n");
@@ -379,19 +382,22 @@ int main() {
 
     case 2:
     printf("Regras do jogo:\n");
-    printf("1. Vence a carta com maior valor no atributo escolhido\n ");
+    printf("1. Vence a carta com maior valor no atributo escolhido\n");
     printf("2. Para DENSIDADE DEMOGRÁFICA, a carta com menor valor vence.\n");
     printf("3. Os valores cadastrados devem ser real.\n");
         break;
 
     case 3:
-    printf("\n............Saindo do jogo! Até logo..............\n");
+    printf("Saindo do jogo! Até logo..............\n");
         break;
 
     default:
     printf("***-- Opção inválida! Por favor, tente novamente! --***");
         return 1;
     }
-
+     
+    } while (opcao !=  3);
     return 0;
+
+     
 }
